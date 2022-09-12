@@ -1,0 +1,24 @@
+
+ class Solution {
+public:
+    int partitionString(string s) {
+        
+        // int startIdx = 0;
+        int partitions = 0;
+        map<char, int> mp;
+        // mp[s[0]] = 1;
+        for(int i = 0; i < s.length(); i++){
+            if(mp.find(s[i]) == mp.end()){
+                mp[s[i]] = 1;
+                // cout << mp[i] << "-" << s[i] << endl;
+            }
+            else{
+                partitions++;
+                mp.clear();
+                mp[s[i]] = 1;
+            }
+            
+        }
+        return partitions+1;
+    }
+};
