@@ -1,0 +1,30 @@
+https://leetcode.com/contest/weekly-contest-310/
+
+class Solution {
+public:
+    int mostFrequentEven(vector<int>& nums) {
+        vector<int> freq(100001, 0);
+        for(int i = 0; i < nums.size(); i++){
+            freq[nums[i]]++;
+        }
+        
+        int maxFreq = INT_MIN;
+        for(int i = 0; i < 100001; i+=2){
+            maxFreq = max(maxFreq, freq[i]);
+        }
+        
+        int ans = -1;
+        for(int i = 0; i < 100001; i+=2){
+            if(maxFreq == freq[i]){
+                ans = i;
+                break;
+            }
+        }
+        if(maxFreq == INT_MIN || maxFreq == 0){
+            return -1;
+        }
+        else{
+            return ans;
+        }
+    }
+};
