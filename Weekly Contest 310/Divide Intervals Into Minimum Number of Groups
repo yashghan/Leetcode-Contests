@@ -1,0 +1,35 @@
+class Solution {
+public:
+    static bool cmp(vector<int> &v1, vector<int> &v2){
+        if(v1[0] == v2[0]){
+            return v1[1] < v2[1];
+        }
+        else{
+            return v1[0] < v2[0];
+        }
+    }
+        
+    int minGroups(vector<vector<int>>& intervals) {
+        
+        sort(intervals.begin(), intervals.end(), cmp);
+        // for(int i = 0; i < intervals.size(); i++){
+        //     for(int j = 0; j < intervals[0].size(); j++){
+        //         cout << intervals[i][j] << " ";
+        //     }
+        //     cout << endl;
+        // }
+        
+        priority_queue<int, vector<int>, greater<int>> pq;
+        
+        for(auto interval: intervals){
+            int left = interval[0];
+            int right = interval[1];
+            
+            if(!pq.empty() && left > pq.top()){
+                pq.pop();
+            }
+            pq.push(right);
+        }
+        return pq.size();
+    }
+};
