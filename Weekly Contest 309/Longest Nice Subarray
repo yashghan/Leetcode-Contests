@@ -1,3 +1,5 @@
+https://leetcode.com/contest/weekly-contest-309/problems/longest-nice-subarray/
+
 class Solution {
 public:
     int longestNiceSubarray(vector<int>& nums) {
